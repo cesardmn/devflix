@@ -1,0 +1,19 @@
+{
+  "name": "devflix",
+  "version": "1.0.0",
+  "description": "CRUD to save favorite dev links.",
+  "keywords": ["NextJs", "React"],
+  "author": "Cesar Dimi",
+  "license": "ISC",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "13.4.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  }
+}
