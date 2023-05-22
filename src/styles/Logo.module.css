@@ -2,7 +2,7 @@
   /* background-color: var(--dark-primary); */
   color: var(--primary);
   font-family: "Arial", sans-serif;
-  font-size: var(--lg-1);
+  font-size: var(--md-2);
   font-weight: bold;
   padding: var(--sm-1) var(--sm-2);
   filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
