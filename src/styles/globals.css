@@ -33,6 +33,7 @@
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* border: 1px solid #100f1018; */
 }
 
 html {
@@ -50,13 +51,16 @@ body {
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+li {
+  list-style: none;
+}
+
 #__next {
   /* or main */
   height: inherit;
   width: inherit;
   overflow: hidden;
   align-items: center;
-  padding: 1rem;
 }
 
 .app {
@@ -65,5 +69,6 @@ body {
   flex-direction: column;
   width: 100%;
   height: 100%;
-  border: 1px solid red;
+  overflow: scroll;
+  gap: 1rem;
 }
