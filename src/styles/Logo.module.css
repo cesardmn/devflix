@@ -1,7 +1,7 @@
 .logo {
   /* background-color: var(--dark-primary); */
   color: var(--primary);
-  font-family: "Arial", sans-serif;
+  font-family: 'Arial', sans-serif;
   font-size: var(--md-1);
   font-weight: bold;
   padding: var(--sm-1) var(--sm-2);

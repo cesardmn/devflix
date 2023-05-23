@@ -1,9 +1,9 @@
 // next
-import Head from "next/head";
+import Head from 'next/head'
 
 // components
-import Header from "@components/Header";
-import Categories from "@components/Categories";
+import Header from '@components/Header'
+import Categories from '@components/Categories'
 
 export default function Home() {
   return (
@@ -58,5 +58,5 @@ export default function Home() {
         ></iframe>
       </div>
     </>
-  );
+  )
 }

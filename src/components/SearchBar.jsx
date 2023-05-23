@@ -1,6 +1,6 @@
 // styles
-import styles from "@styles/SearchBar.module.css"
-import { GrSearch } from "react-icons/gr";
+import styles from '@styles/SearchBar.module.css'
+import { GrSearch } from 'react-icons/gr'
 
 export default function SearchBar() {
   return (
@@ -8,7 +8,7 @@ export default function SearchBar() {
       <input type="search" name="" id="" placeholder="Pesquisar" />
       <div className={styles.iconButton}>
         <GrSearch />
-      </div>  
+      </div>
     </div>
-  );
+  )
 }

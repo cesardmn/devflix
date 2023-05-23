@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  --radius: 28px
+  --radius: 28px;
 }
 
 .searchBar input {

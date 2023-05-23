@@ -1,11 +1,11 @@
-import Image from "next/image";
+import Image from 'next/image'
 
 // styles
-import styles from "@styles/Header.module.css";
+import styles from '@styles/Header.module.css'
 
 // components
-import Logo from "./Logo";
-import SearchBar from "./SearchBar";
+import Logo from './Logo'
+import SearchBar from './SearchBar'
 
 export default function Header() {
   return (
@@ -14,8 +14,8 @@ export default function Header() {
         <Logo />
       </div>
       <div className={styles.searchBar}>
-        {" "}
-        <SearchBar />{" "}
+        {' '}
+        <SearchBar />{' '}
       </div>
       <div className={styles.avatar}>
         <figure>
@@ -25,8 +25,6 @@ export default function Header() {
           />
         </figure>
       </div>
-
-    
     </header>
-  );
+  )
 }

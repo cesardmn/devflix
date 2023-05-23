@@ -21,8 +21,8 @@
 
 .avatar {
   height: 100%;
-  width:15%;
-   cursor: pointer;
+  width: 15%;
+  cursor: pointer;
   /* border-radius: 50%; */
 }
 
@@ -40,5 +40,4 @@
   width: auto;
   height: 100%;
   border: 1px solid var(--complementary);
-
 }

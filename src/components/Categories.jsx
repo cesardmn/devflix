@@ -1,5 +1,5 @@
 //styles
-import styles from "@styles/Categories.module.css";
+import styles from '@styles/Categories.module.css'
 
 export default function Categories() {
   return (
@@ -10,5 +10,5 @@ export default function Categories() {
       <li className={styles.item}>GitHub</li>
       <li className={styles.item}>Go</li>
     </ul>
-  );
+  )
 }
