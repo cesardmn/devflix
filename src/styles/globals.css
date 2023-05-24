@@ -55,6 +55,10 @@ li {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+}
+
 #__next {
   /* or main */
   height: inherit;

@@ -6,6 +6,7 @@ import OutlinedInput from '@mui/material/OutlinedInput'
 import InputAdornment from '@mui/material/InputAdornment'
 import IconButton from '@mui/material/IconButton'
 import SearchIcon from '@mui/icons-material/Search'
+import Link from 'next/link'
 
 export default function Layout({ children }) {
   const languaes = ['Java', 'JavaScript', 'Python', 'PHP', 'C++', 'Go']
@@ -16,7 +17,9 @@ export default function Layout({ children }) {
         <header className={styles.header}>
           <nav className={styles.bar}>
             <div className="logo">
-              <Logo />
+              <Link href="/">
+                <Logo />
+              </Link>
             </div>
 
             <div className={styles.search}>

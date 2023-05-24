@@ -2,7 +2,7 @@
   /* background-color: var(--dark-primary); */
   color: var(--primary);
   font-family: 'Arial', sans-serif;
-  font-size: var(--md-1);
+  font-size: var(--md-2);
   font-weight: bold;
   filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
   height: 100%;
@@ -10,4 +10,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media only screen and (min-width: 600px) {
+  .logo {
+    font-size: var(--md-3);
+  }
 }
