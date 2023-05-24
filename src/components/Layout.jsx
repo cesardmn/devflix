@@ -46,7 +46,7 @@ export default function Layout({ children }) {
           <nav className={styles.cat}>
             <button className={styles.selected}>FrontEnd</button>
             {languaes.map((lang) => {
-              return <button>{lang}</button>
+              return <button key={lang}>{lang}</button>
             })}
           </nav>
         </header>

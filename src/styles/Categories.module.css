@@ -1,6 +1,8 @@
 .container {
   height: 7%;
   width: auto;
+  background-color: #606060;
+  max-width: 900px;
   overflow-y: scroll;
   display: flex;
   gap: 1rem;

@@ -2,9 +2,8 @@
 import Head from 'next/head'
 
 // components
-import Header from '@components/Header'
-import Categories from '@components/Categories'
 import Layout from '@src/components/Layout'
+import CardVideoList from '@src/components/CardVideoList'
 
 export default function Home() {
   return (
@@ -17,7 +16,7 @@ export default function Home() {
       </Head>
       <div className="app">
         <Layout>
-          Conteúdo aqui
+          <CardVideoList />
         </Layout>
       </div>
     </>

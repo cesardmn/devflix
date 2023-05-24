@@ -58,3 +58,8 @@
   background-color: #0f0f0f;
   color: #e2e2e2;
 }
+
+.main {
+  height: 100%;
+  overflow-y: scroll;
+}
