@@ -1,7 +1,6 @@
 .container {
-  height: 7%;
+  height: 100%;
   width: auto;
-  background-color: #606060;
   max-width: 900px;
   overflow-y: scroll;
   display: flex;

@@ -6,10 +6,12 @@ import OutlinedInput from '@mui/material/OutlinedInput'
 import InputAdornment from '@mui/material/InputAdornment'
 import IconButton from '@mui/material/IconButton'
 import SearchIcon from '@mui/icons-material/Search'
+import { useVideos } from '@providers/VideosProvider'
 import Link from 'next/link'
+import Categories from './Categories'
 
 export default function Layout({ children }) {
-  const languaes = ['Java', 'JavaScript', 'Python', 'PHP', 'C++', 'Go']
+  const { videos } = useVideos()
 
   return (
     <>
@@ -17,7 +19,11 @@ export default function Layout({ children }) {
         <header className={styles.header}>
           <nav className={styles.bar}>
             <div className="logo">
-              <Link href="/">
+              <Link
+                href={{
+                  pathname: '/',
+                }}
+              >
                 <Logo />
               </Link>
             </div>
@@ -47,10 +53,7 @@ export default function Layout({ children }) {
           </nav>
 
           <nav className={styles.cat}>
-            <button className={styles.selected}>FrontEnd</button>
-            {languaes.map((lang) => {
-              return <button key={lang}>{lang}</button>
-            })}
+            <Categories />
           </nav>
         </header>
         <main className={styles.main}>{children}</main>
