@@ -22,9 +22,18 @@ export default function Layout({ children }) {
 
   const { db } = useDb()
 
-  const handleHome = ()  => {
+  const handleHome = () => {
     setVideos(db)
   }
+
+  const handleChange = (e) => {
+    // console.log(e.target.value.toLowerCase())
+    setVideos(
+      db.filter((video) =>
+        video.description.toLowerCase().includes(e.target.value.toLowerCase())
+      )
+    )
+  } 
 
   return (
     <>
@@ -62,6 +71,9 @@ export default function Layout({ children }) {
                     </IconButton>
                   </InputAdornment>
                 }
+                onChange={(e) => {
+                  handleChange(e)
+                }}
               />
             </div>
 
@@ -69,8 +81,6 @@ export default function Layout({ children }) {
               <Avatar src="https://avatars.githubusercontent.com/u/40774019?v=4" />
             </div>
           </nav>
-
-
         </header>
         <main className={styles.main}>{children}</main>
       </div>
