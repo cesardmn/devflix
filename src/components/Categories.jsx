@@ -1,11 +1,14 @@
 //styles
 import styles from '@styles/Categories.module.css'
 import { useVideos } from '@providers/VideosProvider'
+import { useCategoryFilter } from '@providers/CategoryFilterProvider'
 import { CallEnd } from '@mui/icons-material'
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 
 export default function Categories() {
-  const { videos } = useVideos()
+  const { videos, setVideos } = useVideos()
+  const { setCategoryFilter } = useCategoryFilter()
   const [categories, setCategories] = useState(null)
 
   useEffect(() => {
@@ -21,13 +24,26 @@ export default function Categories() {
     }
   }, [videos])
 
+  const handleCategoryFilter = (e) => {
+    setCategoryFilter(e.target.innerText)
+
+  }
+
   return (
     <ul className={styles.container}>
       {categories &&
         categories.map((category) => (
-          <li className={styles.item} key={category}>
-            {category}
-          </li>
+          <Link href={'/'} key={category}>
+            <li
+              className={styles.item}
+              
+              onClick={(e) => {
+                handleCategoryFilter(e)
+              }}
+            >
+              {category}
+            </li>
+          </Link>
         ))}
     </ul>
   )
