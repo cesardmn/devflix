@@ -1,21 +1,24 @@
+// react
+import { useEffect } from 'react'
+
 // next
 import Head from 'next/head'
 
 // components
 import Layout from '@src/components/Layout'
 import CardVideoList from '@src/components/CardVideoList'
-import { useEffect, useState } from 'react'
+import Categories from '@src/components/Categories'
 
 //providers
 import { useVideos } from '@providers/VideosProvider'
-import { useCategoryFilter } from '@providers/CategoryFilterProvider'
+import { db, useDb } from '@providers/DbProvider'
 
 export default function Home() {
-  const { videos, setVideos } = useVideos()
-  const { categoryFilter } = useCategoryFilter()
+  const { setVideos } = useVideos()
+  const { setDb } = useDb()
 
   useEffect(() => {
-    const videos = [
+    const db = [
       {
         id: 'lUa-ZDcTnt4',
         title: 'Como Aprender Java, passo a passo!',
@@ -82,8 +85,10 @@ export default function Home() {
         cat: 'PHP',
       },
     ]
-    setVideos(videos)
-  }, [])
+
+    setDb(db)
+    setVideos(db)
+  }, [db])  
 
   return (
     <>
@@ -95,6 +100,7 @@ export default function Home() {
       </Head>
       <div className="app">
         <Layout>
+          <Categories />
           <CardVideoList />
         </Layout>
       </div>

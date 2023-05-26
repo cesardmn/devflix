@@ -1,7 +1,7 @@
 .container {
-  height: 100%;
-  width: auto;
-  max-width: 900px;
+  height: auto;
+  width: 100%;
+  /* max-width: 900px; */
   overflow-y: scroll;
   display: flex;
   gap: 1rem;
@@ -9,6 +9,9 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
   overflow-y: scroll;
+  position: fixed;
+  z-index: 2;
+  background-color: white;
 }
 
 .container::-webkit-scrollbar {

@@ -1,32 +1,44 @@
-//styles
-import styles from '@styles/Categories.module.css'
-import { useVideos } from '@providers/VideosProvider'
-import { useCategoryFilter } from '@providers/CategoryFilterProvider'
-import { CallEnd } from '@mui/icons-material'
+// react
 import { useEffect, useState } from 'react'
+
+// next
 import Link from 'next/link'
 
+//styles
+import styles from '@styles/Categories.module.css'
+
+// providers
+import { useDb } from '@providers/DbProvider'
+import { useVideos } from '@providers/VideosProvider'
+import { useCategoryFilter } from '@providers/CategoryFilterProvider'
+
 export default function Categories() {
-  const { videos, setVideos } = useVideos()
+  const { db } = useDb()
+  const { setVideos } = useVideos()
   const { setCategoryFilter } = useCategoryFilter()
   const [categories, setCategories] = useState(null)
 
   useEffect(() => {
-    if (videos) {
+    if (db) {
       let cat = new Set()
 
-      for (const video of [...videos]) {
+      for (const video of [...db]) {
         cat.add(video.cat)
       }
       cat = [...cat]
 
       setCategories(cat)
     }
-  }, [videos])
+  }, [db])
 
   const handleCategoryFilter = (e) => {
     setCategoryFilter(e.target.innerText)
 
+    setVideos(
+      db.filter(
+        (video) => video.cat.toLowerCase() === e.target.innerText.toLowerCase()
+      )
+    )
   }
 
   return (
@@ -36,7 +48,6 @@ export default function Categories() {
           <Link href={'/'} key={category}>
             <li
               className={styles.item}
-              
               onClick={(e) => {
                 handleCategoryFilter(e)
               }}

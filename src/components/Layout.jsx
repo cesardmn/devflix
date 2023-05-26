@@ -1,24 +1,42 @@
+// next
+import Link from 'next/link'
+
 //styles
 import styles from '@styles/Layout.module.css'
-import Logo from './Logo'
 import { Avatar } from '@mui/material'
 import OutlinedInput from '@mui/material/OutlinedInput'
 import InputAdornment from '@mui/material/InputAdornment'
 import IconButton from '@mui/material/IconButton'
 import SearchIcon from '@mui/icons-material/Search'
-import { useVideos } from '@providers/VideosProvider'
-import Link from 'next/link'
+
+// components
+import { useDb } from '@src/providers/DbProvider'
+import Logo from './Logo'
 import Categories from './Categories'
 
+// providers
+import { useVideos } from '@providers/VideosProvider'
+
 export default function Layout({ children }) {
-  const { videos } = useVideos()
+  const { setVideos } = useVideos()
+
+  const { db } = useDb()
+
+  const handleHome = ()  => {
+    setVideos(db)
+  }
 
   return (
     <>
       <div className={styles.layout}>
         <header className={styles.header}>
           <nav className={styles.bar}>
-            <div className="logo">
+            <div
+              className="logo"
+              onClick={(e) => {
+                handleHome()
+              }}
+            >
               <Link
                 href={{
                   pathname: '/',
@@ -52,9 +70,7 @@ export default function Layout({ children }) {
             </div>
           </nav>
 
-          <nav className={styles.cat}>
-            <Categories />
-          </nav>
+
         </header>
         <main className={styles.main}>{children}</main>
       </div>
