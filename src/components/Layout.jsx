@@ -131,8 +131,9 @@ export default function Layout({ children }) {
                     href={{
                       pathname: '/video',
                     }}
+                    key="registerUrl"
                   >
-                    <MenuItem key="registerUrl">Cadastrar Video</MenuItem>
+                    <MenuItem>Cadastrar Video</MenuItem>
                   </Link>,
                 ]
               ) : (
