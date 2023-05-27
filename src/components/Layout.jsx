@@ -56,7 +56,7 @@ export default function Layout({ children }) {
   useEffect(() => {
     if (session) {
       if (session.user) {
-        setUser(session.user) 
+        setUser(session.user)
       }
     }
   }, [session])
@@ -127,9 +127,13 @@ export default function Layout({ children }) {
                   <MenuItem key="signOut" onClick={() => signOut()}>
                     Sair
                   </MenuItem>,
-                  <MenuItem key="registerUrl" onClick={() => handleClose()}>
-                    Cadastrar url
-                  </MenuItem>,
+                  <Link
+                    href={{
+                      pathname: '/video',
+                    }}
+                  >
+                    <MenuItem key="registerUrl">Cadastrar Video</MenuItem>
+                  </Link>,
                 ]
               ) : (
                 <MenuItem onClick={() => signIn()}>Entrar</MenuItem>
