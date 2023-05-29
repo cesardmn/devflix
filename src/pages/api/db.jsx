@@ -1,5 +1,4 @@
 export default function handler(req, res) {
-  
   // todo fetch db.
 
   const db = [

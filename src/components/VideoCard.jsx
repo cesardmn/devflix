@@ -7,9 +7,7 @@ import Link from 'next/link'
 
 export default function VideoCard({ video }) {
   return (
-    <Link
-      href={`player?id=${video.id}`}
-    >
+    <Link href={`player?id=${video.id}`}>
       <CardActionArea>
         <Card sx={{ maxWidth: '360px', height: 'auto' }}>
           <CardMedia component="img" alt={video.title} image={video.thumb} />

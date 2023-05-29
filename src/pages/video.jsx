@@ -1,34 +1,63 @@
+// react
 import { useState } from 'react'
+
+// next
+import { useRouter } from 'next/router'
+
+// styles
+import styles from '@styles/Video.module.css'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
-import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
 import Layout from '@src/components/Layout'
 
-import styles from '@styles/Video.module.css'
+// providers
+import { useDb } from '@providers/DbProvider'
 
 export default function Video() {
   const [url, setUrl] = useState('')
   const [error, setError] = useState(false)
   const [language, setLanguage] = useState('')
+  const router = useRouter()
+
+  const { db, setDb } = useDb()
 
   const validateUrl = (url) => {
-    // YouTube URL validation regex
     const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/
     return youtubeRegex.test(url)
   }
 
   const handleFormSubmit = (event) => {
-    event.preventDefault() // Prevent the default form submission behavior
+    event.preventDefault()
     const isValidUrl = validateUrl(url)
-    setError(!isValidUrl) // Set error state based on YouTube URL validation
-    // Handle the form submission logic here
+    setError(!isValidUrl)
+
     if (isValidUrl) {
-      // URL is valid, proceed with the submission
-      console.log('Form submitted successfully')
-    } else {
-      // URL is invalid, display an error message or take appropriate action
-      console.log('Invalid URL')
+      try {
+        const match = url.match(
+          /(?:\?v=|\/embed\/|\.be\/|\/v\/|\/e\/|\/watch\?v=|\/embed\/|\.be\/|\/v\/|\/e\/)([\w\-]{11})/
+        )
+        const videoId = match && match[1]
+
+        fetch(
+          `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${videoId}&key=AIzaSyDvTryBwSjTIeqSO8bCQP3HAYIxxnZX_i0`
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            const dataVideo = {
+              id: videoId,
+              title: data.items[0].snippet.title,
+              description: data.items[0].snippet.description,
+              thumb: data.items[0].snippet.thumbnails.standard.url,
+              cat: language,
+            }
+
+            setDb([dataVideo, ...db])
+            console.log([dataVideo, ...db])
+            localStorage.setItem('localDB', JSON.stringify([dataVideo, ...db]))
+          })
+        router.push('./')
+      } catch (error) {}
     }
   }
 
