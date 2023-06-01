@@ -53,7 +53,6 @@ export default function Video() {
             }
 
             setDb([dataVideo, ...db])
-            console.log([dataVideo, ...db])
             localStorage.setItem('localDB', JSON.stringify([dataVideo, ...db]))
           })
         router.push('./')

@@ -45,7 +45,6 @@ export default function Layout({ children }) {
   }
 
   const handleChange = (e) => {
-    // console.log(e.target.value.toLowerCase())
     setVideos(
       db.filter((video) =>
         video.description.toLowerCase().includes(e.target.value.toLowerCase())
@@ -56,7 +55,25 @@ export default function Layout({ children }) {
   useEffect(() => {
     if (session) {
       if (session.user) {
-        setUser(session.user)
+        const { user } = session
+
+        fetch('/api/users', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: user.email,
+            name: user.name,
+            avatar: user.image,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data)
+          })
+
+        setUser(user)
       }
     }
   }, [session])
@@ -137,7 +154,7 @@ export default function Layout({ children }) {
                   </Link>,
                 ]
               ) : (
-                <MenuItem onClick={() => signIn()}>Entrar</MenuItem>
+                <MenuItem onClick={() => signIn('github')}>Entrar</MenuItem>
               )}
             </Menu>
           </nav>

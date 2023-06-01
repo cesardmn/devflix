@@ -4,7 +4,8 @@
       "@src/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
       "@styles/*": ["./src/styles/*"],
-      "@providers/*": ["./src/providers/*"]
+      "@providers/*": ["./src/providers/*"],
+      "@services/*": ["./services/*"]
     }
   }
 }
