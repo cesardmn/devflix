@@ -55,7 +55,7 @@ export default function Layout({ children }) {
   useEffect(() => {
     if (session) {
       if (session.user) {
-        const { user } = session
+        const { sessionUser } = session
 
         fetch('/api/users', {
           method: 'POST',
@@ -63,9 +63,9 @@ export default function Layout({ children }) {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            email: user.email,
-            name: user.name,
-            avatar: user.image,
+            email: sessionUser.email,
+            name: sessionUser.name,
+            avatar: sessionUser.image,
           }),
         })
           .then((response) => response.json())
@@ -73,7 +73,7 @@ export default function Layout({ children }) {
             console.log(data)
           })
 
-        setUser(user)
+        setUser(sessionUser)
       }
     }
   }, [session])
@@ -119,44 +119,6 @@ export default function Layout({ children }) {
                 }}
               />
             </div>
-
-            <div className={styles.avatar} onClick={handleMenu}>
-              {user ? <Avatar src={user.image} /> : <Avatar src="" />}
-            </div>
-
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorEl}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorEl)}
-              onClose={handleClose}
-            >
-              {user ? (
-                [
-                  <MenuItem key="signOut" onClick={() => signOut()}>
-                    Sair
-                  </MenuItem>,
-                  <Link
-                    href={{
-                      pathname: '/video',
-                    }}
-                    key="registerUrl"
-                  >
-                    <MenuItem>Cadastrar Video</MenuItem>
-                  </Link>,
-                ]
-              ) : (
-                <MenuItem onClick={() => signIn('github')}>Entrar</MenuItem>
-              )}
-            </Menu>
           </nav>
         </header>
         <main className={styles.main}>{children}</main>

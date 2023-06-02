@@ -17,6 +17,7 @@ import Player from '@src/components/Player'
 import { useDb } from '@providers/DbProvider'
 import { useVideos } from '@providers/VideosProvider'
 import { usePlayer } from '@providers/PlayerProvider'
+import Profile from '@src/components/Profile'
 
 export default function Home() {
   const { setDb } = useDb()
@@ -56,7 +57,8 @@ export default function Home() {
             {player ? <KeyboardBackspaceIcon /> : <Logo />}
           </div>
           {!player && <SearchAppBar />}
-          <Avatar />
+
+          <Profile />
         </nav>
 
         {!player && <Categories />}
