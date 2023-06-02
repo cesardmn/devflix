@@ -1,5 +1,5 @@
 import styles from '@styles/Logo.module.css'
 
 export default function Logo() {
-  return <div className={styles.logo}>DEVFLIX</div>
+  return <h1 className={styles.logo}>DEVFLIX</h1>
 }

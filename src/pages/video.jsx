@@ -38,6 +38,7 @@ export default function Video() {
           /(?:\?v=|\/embed\/|\.be\/|\/v\/|\/e\/|\/watch\?v=|\/embed\/|\.be\/|\/v\/|\/e\/)([\w\-]{11})/
         )
         const videoId = match && match[1]
+        const url = `${process.env.YOUTUBE_VIDEO_URL}&key=${process.env.YOUTUBE_API_KEY}`
 
         fetch(
           `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id=${videoId}&key=AIzaSyDvTryBwSjTIeqSO8bCQP3HAYIxxnZX_i0`

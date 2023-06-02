@@ -1,0 +1,58 @@
+.app {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.app header {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app header nav {
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  max-width: 900px;
+}
+
+.app header .categories {
+  height: auto;
+  width: 100vw;
+  overflow: scroll;
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.app header .categories::-webkit-scrollbar {
+  display: none;
+}
+
+.app header .categories li {
+  height: auto;
+  width: auto;
+  padding: var(--sm-2) var(--md-1);
+  background-color: #f2f2f2;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #090909;
+}
+
+.app main {
+  overflow-y: scroll;
+}
