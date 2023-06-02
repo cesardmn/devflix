@@ -25,6 +25,10 @@
   max-width: 900px;
 }
 
+.app header nav .logo {
+  cursor: pointer;
+}
+
 .app main {
   overflow-y: scroll;
 }
