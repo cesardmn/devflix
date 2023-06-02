@@ -7,6 +7,8 @@ import { DbProvider } from '@providers/DbProvider'
 import { VideosProvider } from '@providers/VideosProvider'
 import { CategoryFilterProvider } from '@providers/CategoryFilterProvider'
 import { UserProvider } from '@providers/UserProvider'
+import { PlayerProvider } from '@src/providers/PlayerProvider'
+import { VideoOnPLayProvider } from '@src/providers/VideoOnPLayProvider'
 
 export default function App({
   Component,
@@ -18,7 +20,11 @@ export default function App({
         <DbProvider>
           <VideosProvider>
             <CategoryFilterProvider>
-              <Component {...pageProps} />
+              <PlayerProvider>
+                <VideoOnPLayProvider>
+                  <Component {...pageProps} />
+                </VideoOnPLayProvider>
+              </PlayerProvider>
             </CategoryFilterProvider>
           </VideosProvider>
         </DbProvider>

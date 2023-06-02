@@ -9,17 +9,18 @@ import { Avatar } from '@mui/material'
 import Logo from '@components/Logo'
 import SearchAppBar from '@src/components/SearchBar'
 import Categories from '@src/components/Categories'
+import CardVideoList from '@src/components/CardVideoList'
 
 // providers
 import { useDb } from '@providers/DbProvider'
 import { useVideos } from '@providers/VideosProvider'
-import CardVideoList from '@src/components/CardVideoList'
+import { usePlayer } from '@providers/PlayerProvider'
+import Player from '@src/components/Player'
 
 export default function Home() {
-  const [videoOnPlayer, setVideoOnPlay] = useState(false)
-
   const { setDb } = useDb()
   const { setVideos } = useVideos()
+  const { player } = usePlayer()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,17 +42,15 @@ export default function Home() {
       <header>
         <nav>
           <Logo />
-          <SearchAppBar />
+          {!player && <SearchAppBar />}
           <Avatar />
         </nav>
 
-        <Categories />
+        {!player && <Categories />}
       </header>
 
       {/* todo implement skeleton */}
-      <main>
-        <h1>{videoOnPlayer ? 'Video Player' : <CardVideoList />}</h1>
-      </main>
+      <main>{player ? <Player /> : <CardVideoList />}</main>
     </div>
   )
 }
