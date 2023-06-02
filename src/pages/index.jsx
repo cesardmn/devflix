@@ -1,12 +1,11 @@
 //  react
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 // next
 import Head from 'next/head'
 
 // styles
 import styles from '@styles/Home.module.css'
-import { Avatar } from '@mui/material'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace'
 
 //components
@@ -23,11 +22,12 @@ import { usePlayer } from '@providers/PlayerProvider'
 import Profile from '@src/components/Profile'
 
 export default function Home() {
-  const { setDb } = useDb()
+  const { db, setDb } = useDb()
   const { setVideos } = useVideos()
   const { player, setPlayer } = usePlayer()
 
   const handleHome = () => {
+    setVideos(db)
     setPlayer(false)
   }
 
