@@ -1,17 +1,12 @@
 .container {
   height: auto;
-  width: 100%;
-  /* max-width: 900px; */
-  overflow-y: scroll;
+  width: 100vw;
+  overflow: scroll;
   display: flex;
   gap: 1rem;
-  padding: var(--sm-1);
+  padding: 1rem;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  overflow-y: scroll;
-  position: fixed;
-  z-index: 2;
-  background-color: white;
 }
 
 .container::-webkit-scrollbar {
@@ -19,7 +14,7 @@
 }
 
 .item {
-  height: 100%;
+  height: auto;
   width: auto;
   padding: var(--sm-2) var(--md-1);
   background-color: #f2f2f2;

@@ -5,3 +5,15 @@
     ## preview
 
 ![home preview](./public/preview.gif)
+
+<!--
+
+TODO
+
+LOADING OR RELOADING:
+
+Get videos on DB and set to localStorage.
+
+
+
+ -->

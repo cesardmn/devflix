@@ -11,6 +11,7 @@ import SearchAppBar from '@src/components/SearchBar'
 
 // providers
 import { useDb } from '@providers/DbProvider'
+import Categories from '@src/components/Categories'
 
 export default function Home() {
   const [categories, setCategories] = useState([
@@ -40,8 +41,6 @@ export default function Home() {
     fetchData()
   }, [])
 
-  
-
   return (
     <div className={styles.app}>
       <header>
@@ -51,12 +50,7 @@ export default function Home() {
           <Avatar />
         </nav>
 
-        {/* todo implement skeleton */}
-        <ul className={styles.categories}>
-          {categories.map((category) => {
-            return <li key={category}>{category}</li>
-          })}
-        </ul>
+        <Categories />
       </header>
 
       {/* todo implement skeleton */}
