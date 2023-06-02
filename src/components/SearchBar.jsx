@@ -1,6 +1,11 @@
+// styles
 import { styled, alpha } from '@mui/material/styles'
 import InputBase from '@mui/material/InputBase'
 import SearchIcon from '@mui/icons-material/Search'
+
+//providers
+import { useDb } from '@providers/DbProvider'
+import { useVideos } from '@providers/VideosProvider'
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -46,6 +51,28 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }))
 
 export default function SearchBar() {
+  const { db } = useDb()
+  const { setVideos } = useVideos()
+
+  const handleChange = (e) => {
+    const criteria = e.target.value.toLowerCase()
+
+    const filter = (() => {
+      const result = db.filter((video) => {
+        const descriptionLowerCase = video.description.toLowerCase()
+        const titleLowerCase = video.title.toLowerCase()
+        return (
+          descriptionLowerCase.includes(criteria) ||
+          titleLowerCase.includes(criteria)
+        )
+      })
+
+      return result
+    })()
+
+    setVideos(filter)
+  }
+
   return (
     <Search>
       <SearchIconWrapper>
@@ -54,6 +81,9 @@ export default function SearchBar() {
       <StyledInputBase
         placeholder="Search…"
         inputProps={{ 'aria-label': 'search' }}
+        onChange={(e) => {
+          handleChange(e)
+        }}
       />
     </Search>
   )

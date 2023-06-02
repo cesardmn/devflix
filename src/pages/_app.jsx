@@ -5,7 +5,7 @@ import '@styles/globals.css'
 import { SessionProvider } from 'next-auth/react'
 import { DbProvider } from '@providers/DbProvider'
 import { VideosProvider } from '@providers/VideosProvider'
-import { CategoryFilterProvider } from '@providers/CategoryFilterProvider'
+import { FilterProvider } from '@src/providers/FilterProvider'
 import { UserProvider } from '@providers/UserProvider'
 import { PlayerProvider } from '@src/providers/PlayerProvider'
 import { VideoOnPLayProvider } from '@src/providers/VideoOnPLayProvider'
@@ -19,13 +19,13 @@ export default function App({
       <UserProvider>
         <DbProvider>
           <VideosProvider>
-            <CategoryFilterProvider>
+            <FilterProvider>
               <PlayerProvider>
                 <VideoOnPLayProvider>
                   <Component {...pageProps} />
                 </VideoOnPLayProvider>
               </PlayerProvider>
-            </CategoryFilterProvider>
+            </FilterProvider>
           </VideosProvider>
         </DbProvider>
       </UserProvider>

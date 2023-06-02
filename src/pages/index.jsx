@@ -1,6 +1,9 @@
 //  react
 import { useEffect, useState } from 'react'
 
+// next
+import Head from 'next/head'
+
 // styles
 import styles from '@styles/Home.module.css'
 import { Avatar } from '@mui/material'
@@ -25,7 +28,6 @@ export default function Home() {
   const { player, setPlayer } = usePlayer()
 
   const handleHome = () => {
-    console.log('home')
     setPlayer(false)
   }
 
@@ -45,27 +47,36 @@ export default function Home() {
   }, [])
 
   return (
-    <div className={styles.app}>
-      <header>
-        <nav>
-          <div
-            className={styles.logo}
-            onClick={() => {
-              handleHome()
-            }}
-          >
-            {player ? <KeyboardBackspaceIcon /> : <Logo />}
-          </div>
-          {!player && <SearchAppBar />}
+    <>
+      <Head>
+        <title>DEVFLIX</title>
+        <meta name="description" content="Bucket of develpers video links" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-          <Profile />
-        </nav>
+      <div className={styles.app}>
+        <header>
+          <nav>
+            <div
+              className={styles.logo}
+              onClick={() => {
+                handleHome()
+              }}
+            >
+              {player ? <KeyboardBackspaceIcon /> : <Logo />}
+            </div>
+            {!player && <SearchAppBar />}
 
-        {!player && <Categories />}
-      </header>
+            <Profile />
+          </nav>
 
-      {/* todo implement skeleton */}
-      <main>{player ? <Player /> : <CardVideoList />}</main>
-    </div>
+          {!player && <Categories />}
+        </header>
+
+        {/* todo implement skeleton */}
+        <main>{player ? <Player /> : <CardVideoList />}</main>
+      </div>
+    </>
   )
 }

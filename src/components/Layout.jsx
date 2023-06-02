@@ -70,7 +70,7 @@ export default function Layout({ children }) {
         })
           .then((response) => response.json())
           .then((data) => {
-            console.log(data)
+            // console.log(data)
           })
 
         setUser(sessionUser)
