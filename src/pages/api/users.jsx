@@ -1,5 +1,5 @@
 // prisma
-import { prisma } from '@services/prismaClient'
+import { prisma } from '@src/services/prismaClient'
 
 // nextauth
 import { getServerSession } from 'next-auth/next'
