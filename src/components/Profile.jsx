@@ -42,7 +42,7 @@ export default function Profile() {
       if (session.user) {
         const sessionUser = session.user
 
-        fetch('/api/users', {
+        fetch(`${window.location.origin}/api/users`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

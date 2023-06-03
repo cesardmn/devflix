@@ -41,7 +41,7 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/videos')
+        const response = await fetch(`${window.location.origin}/api/videos`)
         const data = await response.json()
         setDb(data)
         setVideos(data)
