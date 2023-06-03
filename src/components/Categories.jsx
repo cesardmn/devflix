@@ -4,22 +4,23 @@ import { useState } from 'react'
 // providers
 import { useDb } from '@providers/DbProvider'
 import { useVideos } from '@providers/VideosProvider'
+import { useFilter } from '@providers/FilterProvider'
 
 // styles
 import styles from '@styles/Categories.module.css'
 
 export default function Categories() {
   const { db } = useDb()
-  const { videos, setVideos } = useVideos()
+  const { setVideos } = useVideos()
+  const { filter, setFilter } = useFilter()
 
   const categories = [...new Set(db.map((video) => video.cat))].sort()
-  const [selectedCategory, setSelectedCategory] = useState(null)
 
   const handleFilter = (e, category) => {
     const criteria = e.target.innerText.toLowerCase()
     const filter = db.filter((video) => video.cat.toLowerCase() === criteria)
+    setFilter(category)
     setVideos(filter)
-    setSelectedCategory(category)
   }
 
   return (
@@ -29,9 +30,7 @@ export default function Categories() {
           <li
             key={category}
             className={`${styles.item} ${
-              category === selectedCategory && videos.length === 1
-                ? styles.selected
-                : ''
+              category === filter ? styles.selected : ''
             }`}
             onClick={(e) => {
               handleFilter(e, category)

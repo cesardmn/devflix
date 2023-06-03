@@ -6,6 +6,7 @@ import SearchIcon from '@mui/icons-material/Search'
 //providers
 import { useDb } from '@providers/DbProvider'
 import { useVideos } from '@providers/VideosProvider'
+import { useFilter } from '@providers/FilterProvider'
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -53,8 +54,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function SearchBar() {
   const { db } = useDb()
   const { setVideos } = useVideos()
+  const { setFilter } = useFilter()
 
   const handleChange = (e) => {
+    setFilter('')
     const criteria = e.target.value.toLowerCase()
 
     const filter = (() => {

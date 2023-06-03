@@ -22,17 +22,20 @@ import { useDb } from '@providers/DbProvider'
 import { useVideos } from '@providers/VideosProvider'
 import { usePlayer } from '@providers/PlayerProvider'
 import { useForm } from '@providers/FormProvider'
+import { useFilter } from '@providers/FilterProvider'
 
 export default function Home() {
   const { db, setDb } = useDb()
   const { setVideos } = useVideos()
   const { player, setPlayer } = usePlayer()
   const { form, setForm } = useForm()
+  const { setFilter } = useFilter()
 
   const handleHome = () => {
     setVideos(db)
     setPlayer(false)
     setForm(false)
+    setFilter('')
   }
 
   useEffect(() => {
