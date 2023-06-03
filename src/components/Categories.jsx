@@ -18,9 +18,9 @@ export default function Categories() {
 
   const handleFilter = (e, category) => {
     const criteria = e.target.innerText.toLowerCase()
-    const filter = db.filter((video) => video.cat.toLowerCase() === criteria)
+    const filteredVideos = db.filter((video) => video.cat.toLowerCase() === criteria)
     setFilter(category)
-    setVideos(filter)
+    setVideos(filteredVideos)
   }
 
   return (
