@@ -116,43 +116,49 @@ export default function Form() {
   }
 
   return (
-    <form onSubmit={handleFormSubmit} className={styles.videoForm}>
-      <Box
-        sx={{
-          width: 500,
-          maxWidth: '100%',
-        }}
-      >
-        <TextField
-          fullWidth
-          label="YouTube URL"
-          id="url"
-          error={error}
-          helperText={error ? 'Invalid YouTube URL' : ''}
-          value={url}
-          onChange={handleUrlChange}
-          className={styles.textField}
-          required
-        />
-        <TextField
-          fullWidth
-          id="Language"
-          select
-          label="Linguagem"
-          onChange={handleLanguageChange}
-          sx={{ marginTop: '3rem' }}
-          value={language}
-          required
+    <Box
+      sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '1rem', minWidth: '280px' }}
+    >
+      <form onSubmit={handleFormSubmit} className={styles.videoForm}>
+        <Box
+          sx={{
+            width: 500,
+            maxWidth: '100%',
+          }}
         >
-          <MenuItem value="">Selecione uma linguagem</MenuItem>
-          {languages.map((lang) => (
-            <MenuItem key={lang} value={lang}>
-              {lang}
-            </MenuItem>
-          ))}
-        </TextField>
-      </Box>
-      <button type="submit">Submit</button>
-    </form>
+          <TextField
+            fullWidth
+            label="YouTube URL"
+            id="url"
+            error={error}
+            helperText={error ? 'Invalid YouTube URL' : ''}
+            value={url}
+            onChange={handleUrlChange}
+            className={styles.textField}
+            required
+          />
+          <TextField
+            fullWidth
+            id="Language"
+            select
+            label="Linguagem"
+            onChange={handleLanguageChange}
+            sx={{ marginTop: '3rem' }}
+            value={language}
+            required
+          >
+            <MenuItem value="">Selecione uma linguagem</MenuItem>
+            {languages.map((lang) => (
+              <MenuItem key={lang} value={lang}>
+                {lang}
+              </MenuItem>
+            ))}
+          </TextField>
+        </Box>
+        <button type="submit" className={styles.button}>
+          Cadastrar
+        </button>
+      </form>
+    </Box>
   )
 }
