@@ -1,9 +1,6 @@
 // react
 import { useEffect, useState } from 'react'
 
-// next
-import Link from 'next/link'
-
 // nextauth
 import { useSession, signIn, signOut } from 'next-auth/react'
 
@@ -12,6 +9,7 @@ import { Avatar } from '@mui/material'
 import MenuItem from '@mui/material/MenuItem'
 import Menu from '@mui/material/Menu'
 import styles from '@styles/Layout.module.css'
+import GitHubIcon from '@mui/icons-material/GitHub'
 
 // providers
 import { useUser } from '@providers/UserProvider'
@@ -87,16 +85,17 @@ export default function Profile() {
       >
         {user ? (
           [
-            <MenuItem key="signOut" onClick={() => signOut()}>
-              Sair
-            </MenuItem>,
-
             <MenuItem key={'cad'} onClick={handleForm}>
               Cadastrar Video
             </MenuItem>,
+            <MenuItem key="signOut" onClick={() => signOut()}>
+              Sair
+            </MenuItem>,
           ]
         ) : (
-          <MenuItem onClick={() => signIn('github')}>Entrar</MenuItem>
+          <MenuItem onClick={() => signIn('github')} sx={{ gap: 1 }}>
+            <GitHubIcon /> Entrar
+          </MenuItem>
         )}
       </Menu>
     </>

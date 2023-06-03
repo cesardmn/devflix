@@ -1,7 +1,10 @@
+// styles
 import styles from '@styles/CardVideoList.module.css'
 
+// components
 import VideoCard from './VideoCard'
 
+// providers
 import { useVideos } from '@providers/VideosProvider'
 
 export default function CardVideoList() {

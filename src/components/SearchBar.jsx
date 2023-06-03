@@ -82,7 +82,7 @@ export default function SearchBar() {
         <SearchIcon />
       </SearchIconWrapper>
       <StyledInputBase
-        placeholder="Search…"
+        placeholder="Pesquisar"
         inputProps={{ 'aria-label': 'search' }}
         onChange={(e) => {
           handleChange(e)
