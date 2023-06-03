@@ -74,7 +74,12 @@ export default function Form() {
         )
         const videoId = match && match[1]
 
-        fetch(`${window.location.origin}/api/videos`, {
+        const apiUrl =
+          typeof window !== 'undefined'
+            ? `${window.location.origin}/api/videos`
+            : '/api/videos'
+
+        fetch(apiUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
