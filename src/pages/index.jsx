@@ -59,7 +59,7 @@ export default function Home() {
         <title>DEVFLIX</title>
         <meta name="description" content="Bucket of develpers video links" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon-32x32.png" />
       </Head>
 
       <div className={styles.app}>
