@@ -15,22 +15,24 @@ import Categories from '@src/components/Categories'
 import CardVideoList from '@src/components/CardVideoList'
 import Player from '@src/components/Player'
 import Form from '@src/components/Form'
+import Profile from '@src/components/Profile'
 
 // providers
 import { useDb } from '@providers/DbProvider'
 import { useVideos } from '@providers/VideosProvider'
 import { usePlayer } from '@providers/PlayerProvider'
-import Profile from '@src/components/Profile'
+import { useForm } from '@providers/FormProvider'
 
 export default function Home() {
   const { db, setDb } = useDb()
   const { setVideos } = useVideos()
   const { player, setPlayer } = usePlayer()
-  const [form, setForm] = useState(false)
+  const { form, setForm } = useForm()
 
   const handleHome = () => {
     setVideos(db)
     setPlayer(false)
+    setForm(false)
   }
 
   useEffect(() => {
@@ -66,19 +68,27 @@ export default function Home() {
                 handleHome()
               }}
             >
-              {player ? <KeyboardBackspaceIcon /> : <Logo />}
+              {player || form ? (
+                <KeyboardBackspaceIcon />
+              ) : (
+                <Logo onClick={handleHome} />
+              )}
             </div>
-            {!player && <SearchAppBar />}
+            {!player && !form && <SearchAppBar />}
 
             <Profile />
           </nav>
 
-          {!player && <Categories />}
+          {!player && !form && <Categories />}
         </header>
 
         {/* todo implement skeleton */}
         <main>
-          {form ? <Form /> : <>{player ? <Player /> : <CardVideoList />}</>}
+          {!form && !player && <CardVideoList />}
+
+          {player && <Player />}
+
+          {form && <Form />}
         </main>
       </div>
     </>

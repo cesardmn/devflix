@@ -8,8 +8,11 @@ import TextField from '@mui/material/TextField'
 import MenuItem from '@mui/material/MenuItem'
 
 // providers
-import { useDb } from '@providers/DbProvider'
 import { useUser } from '@providers/UserProvider'
+import { usePlayer } from '@providers/PlayerProvider'
+import { useForm } from '@providers/FormProvider'
+import { useVideos } from '@providers/VideosProvider'
+import { useDb } from '@providers/DbProvider'
 
 export default function Form() {
   const languages = [
@@ -47,6 +50,10 @@ export default function Form() {
   const [url, setUrl] = useState('')
   const [error, setError] = useState(false)
   const [language, setLanguage] = useState('')
+  const { setPlayer } = usePlayer()
+  const { setForm } = useForm()
+  const { setVideos } = useVideos()
+  const { db, setDb } = useDb()
 
   const { user } = useUser()
 
@@ -79,7 +86,15 @@ export default function Form() {
           }),
         })
           .then((response) => response.json())
-          .then((data) => console.log(data))
+          .then((data) => {
+            const videoCreatedId = data.id
+            if (videoCreatedId) {
+              setPlayer(false)
+              setForm(false)
+              setDb([data, ...db])
+              setVideos([data, ...db])
+            }
+          })
       } catch (error) {
         console.log(error)
       }

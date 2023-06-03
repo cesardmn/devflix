@@ -8,6 +8,7 @@ import { VideosProvider } from '@providers/VideosProvider'
 import { FilterProvider } from '@src/providers/FilterProvider'
 import { UserProvider } from '@providers/UserProvider'
 import { PlayerProvider } from '@src/providers/PlayerProvider'
+import { FormProvider } from '@src/providers/FormProvider'
 import { VideoOnPLayProvider } from '@src/providers/VideoOnPLayProvider'
 
 export default function App({
@@ -22,7 +23,9 @@ export default function App({
             <FilterProvider>
               <PlayerProvider>
                 <VideoOnPLayProvider>
-                  <Component {...pageProps} />
+                  <FormProvider>
+                    <Component {...pageProps} />
+                  </FormProvider>
                 </VideoOnPLayProvider>
               </PlayerProvider>
             </FilterProvider>

@@ -15,10 +15,14 @@ import styles from '@styles/Layout.module.css'
 
 // providers
 import { useUser } from '@providers/UserProvider'
+import { usePlayer } from '@providers/PlayerProvider'
+import { useForm } from '@providers/FormProvider'
 
 export default function Profile() {
   const { data: session } = useSession()
   const { user, setUser } = useUser()
+  const { player, setPlayer } = usePlayer()
+  const { form, setForm } = useForm()
   const [anchorEl, setAnchorEl] = useState(null)
 
   const handleMenu = (event) => {
@@ -27,6 +31,12 @@ export default function Profile() {
 
   const handleClose = () => {
     setAnchorEl(null)
+  }
+
+  const handleForm = () => {
+    setPlayer(false)
+    setForm(true)
+    handleClose()
   }
 
   useEffect(() => {
@@ -80,14 +90,10 @@ export default function Profile() {
             <MenuItem key="signOut" onClick={() => signOut()}>
               Sair
             </MenuItem>,
-            <Link
-              href={{
-                pathname: '/video',
-              }}
-              key="registerUrl"
-            >
-              <MenuItem>Cadastrar Video</MenuItem>
-            </Link>,
+
+            <MenuItem key={'cad'} onClick={handleForm}>
+              Cadastrar Video
+            </MenuItem>,
           ]
         ) : (
           <MenuItem onClick={() => signIn('github')}>Entrar</MenuItem>
