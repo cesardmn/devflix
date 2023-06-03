@@ -22,8 +22,6 @@ export default function Categories() {
     setSelectedCategory(category)
   }
 
-  console.log(videos.length)
-
   return (
     <ul className={styles.container}>
       {categories.map((category) => {

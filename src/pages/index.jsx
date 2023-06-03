@@ -1,5 +1,5 @@
 //  react
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 // next
 import Head from 'next/head'
@@ -14,6 +14,7 @@ import SearchAppBar from '@src/components/SearchBar'
 import Categories from '@src/components/Categories'
 import CardVideoList from '@src/components/CardVideoList'
 import Player from '@src/components/Player'
+import Form from '@src/components/Form'
 
 // providers
 import { useDb } from '@providers/DbProvider'
@@ -25,6 +26,7 @@ export default function Home() {
   const { db, setDb } = useDb()
   const { setVideos } = useVideos()
   const { player, setPlayer } = usePlayer()
+  const [form, setForm] = useState(false)
 
   const handleHome = () => {
     setVideos(db)
@@ -75,7 +77,9 @@ export default function Home() {
         </header>
 
         {/* todo implement skeleton */}
-        <main>{player ? <Player /> : <CardVideoList />}</main>
+        <main>
+          {form ? <Form /> : <>{player ? <Player /> : <CardVideoList />}</>}
+        </main>
       </div>
     </>
   )

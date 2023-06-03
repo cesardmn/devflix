@@ -48,9 +48,8 @@ export default function Profile() {
           .then((response) => response.json())
           .then((data) => {
             console.log(data)
+            setUser(sessionUser)
           })
-
-        setUser(sessionUser)
       }
     }
   }, [session])
