@@ -117,7 +117,13 @@ export default function Form() {
 
   return (
     <Box
-      sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '1rem', minWidth: '280px' }}
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: '1rem',
+        minWidth: '280px',
+      }}
     >
       <form onSubmit={handleFormSubmit} className={styles.videoForm}>
         <Box

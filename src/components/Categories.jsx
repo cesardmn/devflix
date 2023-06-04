@@ -14,7 +14,7 @@ export default function Categories() {
   const { setVideos } = useVideos()
   const { filter, setFilter } = useFilter()
 
-  const categories = [...new Set(db.map((video) => video.cat))].sort()
+  const categories = db ? [...new Set(db.map((video) => video.cat))].sort() : []
 
   const handleFilter = (e, category) => {
     const criteria = e.target.innerText.toLowerCase()
